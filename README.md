@@ -80,6 +80,18 @@ Replace `your-api-id` and `your-region` with the actual values from your deploye
 
 ## Cleaning Up
 
-To avoid incurring future charges, remember to destroy the resources when you're done:
+remember to destroy the resources when you're done:
 
 cdk destroy
+
+## Design 
+
+The flow of a request would be:
+
+Client sends HTTP request to API Gateway
+API Gateway routes the request to the Lambda Function
+Lambda Function processes the request:
+Interacts with DynamoDB for data operations
+Interacts with S3 for image operations (if implemented)
+Lambda Function sends response back through API Gateway to the client
+CloudWatch logs the Lambda execution
